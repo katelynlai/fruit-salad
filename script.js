@@ -1,27 +1,24 @@
 const x = require('./script2');
 const fruitList = document.querySelector("#fruitSection ul");
-console.log(x);
+const fruitNutrition = document.querySelector("#fruitNutrition");
 
 const fruitFrom = document.querySelector("#inputSection form");
-console.log(fruitFrom);
 fruitFrom.addEventListener("submit", extractFruit);
 
 function extractFruit(e){
     e.preventDefault();
-    addFruit(e.target.fruitInput.value);
+    fetchFruitData(e.target.fruitInput.value);
     e.target.fruitInput.value = "";
 }
-
+ let cal = 0;
 function addFruit(fruit){
     const li = document.createElement("li");
     li.textContent = fruit;
-    if (fruit.trim() === "") {
-        return;
-    } else {
-        // Add click event listener to delete the item when clicked
-        li.addEventListener("click", () => li.remove());
-        fruitList.appendChild(li);
-    }
+    li.addEventListener("click", () => li.remove()); // Add click event listener to delete the item when clicked
+    fruitList.appendChild(li);
+
+    cal += fruit.nutrition.calories;
+    fruitNutrition.textContent = cal;
 }
 
 function fetchFruitData(fruit) {
