@@ -4,8 +4,13 @@
   "description": "Application to find fruit data",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "watchify script.js -o bundle.js"
   },
+  "keywords":[],
   "author": "Katelyn",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "watchify": "^4.0.0"
+  }
 }
