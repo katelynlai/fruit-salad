@@ -7,6 +7,7 @@ const fruitCal = {};
 const apiKey = "50435851-73f213f32ab40e115e4c505e2";
 fruitForm.addEventListener("submit", extractFruit);
 createForm.addEventListener("submit", createNewFruit);
+
 function extractFruit(e) {
     e.preventDefault();
     fetchFruitData(e.target.fruitInput.value);
@@ -48,6 +49,7 @@ async function fetchFruitData(fruit) {
         }, 4000);
     }
 }
+
 async function createNewFruit(e) {
     e.preventDefault();
     const data = {
