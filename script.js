@@ -39,30 +39,7 @@ async function fetchFruitData(fruit) {
         
         const data = await respData.json();
         console.log(`Found fruit data:`, data);
-        
-        if (respImg.ok) {
-            const imgData = await respImg.json();
-            if (imgData.hits && imgData.hits.length > 0) {
-                addFruit(data, imgData);
-            } else {
-                // Use placeholder if no image found
-                const defaultImg = {
-                    hits: [{ previewURL: "https://via.placeholder.com/150x150/90EE90/000000?text=🍎" }]
-                };
-                addFruit(data, defaultImg);
-                messageStatus.textContent = `Added "${fruit}" with default image.`;
-                setTimeout(() => { messageStatus.textContent = ""; }, 3000);
-            }
-        } else {
-            // Use placeholder if image API fails
-            const defaultImg = {
-                hits: [{ previewURL: "https://via.placeholder.com/150x150/90EE90/000000?text=🍎" }]
-            };
-            addFruit(data, defaultImg);
-            messageStatus.textContent = `Added "${fruit}" (image unavailable).`;
-            setTimeout(() => { messageStatus.textContent = ""; }, 3000);
-        }
-        
+         
     } catch (e) {
         console.error('Error:', e);
         messageStatus.textContent = `Error loading "${fruit}". Check console for details.`;
@@ -86,7 +63,6 @@ async function createNewFruit(e) {
         },
         body: JSON.stringify(data)
     }
-    //Make sure to add your deployed API URL in this fetch
     const response = await fetch(`https://fruit-salad-backend-9qu3.onrender.com/fruits`, options);
     let messageStatus = document.querySelector("#message")
     if(response.status === 201) {
