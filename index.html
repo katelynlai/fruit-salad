@@ -17,8 +17,9 @@
 
         <section>
         <form id="create-form">
-           <input id="fruitInput" type="text" name="fruit" placeholder="name">
-           <input type="submit" value="Create">
+           <input id="fruitInput" type="text" name="fruit" placeholder="Fruit name" required>
+           <input id="caloriesInput" type="number" name="calories" placeholder="Calories per 100g" required min="0">
+           <button type="submit">Create Fruit</button>
         </form>
         <p id="message"></p>
     </section>
